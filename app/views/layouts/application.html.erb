@@ -1,15 +1,9 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>LoyaltyDemo</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
-
-  <body>
-    <%= yield %>
-  </body>
-</html>
+<ul>
+  <% if user_signed_in? %>
+    <li>Hi, user</li>
+    <li>Sign Out</li>
+  <% else %>
+    <li>Sign In</li>
+    <li>Sign Up</li>
+  <% end %>
+</ul>
