@@ -21,3 +21,17 @@ Currency.destroy_all
   )
 end
 
+Product.destroy_all
+[
+  [1, 'Power Bank',   '150.0',    'gadget'],
+  [2, 'Type-C Cable', '85.50',    'gadget'],
+  [3, 'Book',         '10.0', 'stationary'],
+  [4, 'Calculator',   '50.0', 'stationary']
+].each do |product|
+  Product.create!(
+    id: product[0],
+    title: product[1],
+    price: product[2],
+		category: product[3]
+  )
+end
