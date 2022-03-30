@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_30_070233) do
+ActiveRecord::Schema.define(version: 2022_03_30_135001) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -57,6 +57,15 @@ ActiveRecord::Schema.define(version: 2022_03_30_070233) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "points"
     t.bigint "currency_id", null: false
+    t.integer "customer_tier"
+    t.boolean "free_coffee_reward", default: false
+    t.boolean "movie_tickets_reward", default: false
+    t.boolean "cash_rebate_reward", default: false
+    t.boolean "birthday_reward", default: false
+    t.datetime "free_coffee_reward_collected_at"
+    t.datetime "movie_tickets_reward_collected_at"
+    t.datetime "cash_rebate_reward_collected_at"
+    t.datetime "birthday_reward_collected_at"
     t.index ["currency_id"], name: "index_users_on_currency_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true

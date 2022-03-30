@@ -36,25 +36,9 @@ Product.destroy_all
   )
 end
 
-# User.destroy_all
-# [
-#   [1, 'Neshma', 'Patel', 'neshma.p@simformsolutions.com', 'Neshma@123', '13/01/1999', '5'],
-#   [2, 'Demo', 'User', 'demo.user@simformsolutions.com', 'Demouser@123', '31/08/1985', '1']
-# ].each do |user|
-#   User.create!(
-#     id: user[0],
-#     first_name: user[1],
-#     last_name: user[2],
-#     email: user[3],
-#     password: user[4],
-#     birthdate: user[5],
-#     currency_id: user[6]
+# 15.times do
+#   Transaction.create(
+#     quantity: Faker::Number.digit,
+#     user_id: User.find(Faker::Number.)
 #   )
 # end
-# TODO====
-15.times do
-  Transaction.create(
-    quantity: Faker::Number.digit,
-    user_id: User.find(Faker::Number.)
-  )
-end
