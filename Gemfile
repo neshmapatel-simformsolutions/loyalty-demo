@@ -24,9 +24,15 @@ gem 'jbuilder', '~> 2.7'
 
 # for user authentication
 gem 'devise'
-
+gem 'pry'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
+
+# serializing resposne
+gem 'fast_jsonapi'
+
+# populating data
+gem 'faker'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false

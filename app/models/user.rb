@@ -7,14 +7,13 @@ class User < ApplicationRecord
   # Associations
   has_many :transactions
   has_many :products, through: :transactions
-
-  # date = Date.today
+  belongs_to :currency
 
   # Validations
   validates :first_name, presence: true
   validates :last_name, presence: true
   validates :birthdate, presence: true
-  validate :check_birthdate
+  # validate :check_birthdate
 
   def check_birthdate
     self.birthdate > Date.today ?  errors.add(:birthdate, "cannot be greater than today's date") : self.save!

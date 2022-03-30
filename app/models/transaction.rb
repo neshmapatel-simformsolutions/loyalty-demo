@@ -6,18 +6,18 @@ class Transaction < ApplicationRecord
   belongs_to :product
 
   # Callbacks
-  before_commit :add_transaction_details
-  after_save :update_user_point
+  before_commit :add_transaction_details, :update_user_point
 
   def add_transaction_details
     self.amount = self.product.price * self.quantity
-    self.value = "#{self.amount.to_f}" + "#{self.currency.code}"
+    self.value = "#{self.currency.code}" + "#{self.amount.to_f}"
     self.save!
   end
 
   def update_user_point
     user = self.user
-    points = (user.transactions.sum(:amount)/10).to_f
+    points = user.currency == self.currency ? (self.amount/10).to_f : ((self.amount/10) * 2).to_f
+    user.points = user.points + points
     user.save!
   end
 end
