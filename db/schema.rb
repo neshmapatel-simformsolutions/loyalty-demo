@@ -55,7 +55,7 @@ ActiveRecord::Schema.define(version: 2022_03_30_135001) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "points"
+    t.integer "points", default: 0
     t.bigint "currency_id", null: false
     t.integer "customer_tier"
     t.boolean "free_coffee_reward", default: false

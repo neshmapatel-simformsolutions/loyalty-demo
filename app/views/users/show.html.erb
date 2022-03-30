@@ -35,4 +35,29 @@
     <td><%=@user.points %></td>
   </tr>
 
-  </table>
+</table>
+<h2> Rewards Collected</h2>
+<table>
+  <tr>
+    <td><b>Free Coffee Reward : </b></td>
+    <td><%= @user.free_coffee_reward ? "Yes" : "No" %></td>
+  </tr>
+
+  <tr>
+    <td><b>Free Movie Tickets Reward : </b></td>
+    <td><%= @user.movie_tickets_reward ? "Yes" : "No" %></td>
+  </tr>
+  <tr>
+    <td><b>5 % Cash Rebate Reward : </b></td>
+    <td><%= @user.cash_rebate_reward ? "Yes" : "No" %></td>
+  </tr>
+  <tr>
+    <td><b>Free Coffee Reward Collected During Birthday Month: </b></td>
+    <td><%= @user.birthday_reward ? "Yes" : "No" %></td>
+  </tr>
+</table>
+
+
+<div>
+  <%= link_to "Display Transactions", users_display_transactions_path %> |
+</div>

@@ -20,9 +20,6 @@ class Transaction < ApplicationRecord
       points = user.currency == self.currency ? (self.amount/100).to_i * 10 : (self.amount/100).to_i * 20
       user.points = user.points.to_f + points
     end
-    user.customer_tier = "standard" if user.points <= 999
-    user.customer_tier = "gold" if user.points > 1000 && user.points < 4999
-    user.customer_tier = "plaitnum" if user.points > 5000
     user.save!
   end
 end

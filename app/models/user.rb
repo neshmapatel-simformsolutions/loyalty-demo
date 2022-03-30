@@ -18,7 +18,7 @@ class User < ApplicationRecord
   validate :check_birthdate
 
   # Callbacks
-  # before_commit :user_status
+  before_commit :user_status
 
   def check_birthdate
     self.birthdate > Date.today ?  errors.add(:birthdate, "cannot be greater than today's date") : nil
@@ -27,5 +27,10 @@ class User < ApplicationRecord
   # add status showing if the user is standard tier customer, gold tier customer or
   # platinum tier customer depending upon the points.
   # add reward thing.
-
+  def user_status
+    self.customer_tier = "standard" if self.points <= 999
+    self.customer_tier = "gold" if self.points > 1000 && self.points < 4999
+    self.customer_tier = "plaitnum" if self.points > 5000
+    self.save!
+  end
 end

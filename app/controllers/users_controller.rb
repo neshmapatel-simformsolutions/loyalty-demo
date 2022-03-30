@@ -4,4 +4,8 @@ class UsersController < ApplicationController
     @user=current_user
   end
 
+  def display_transactions
+    @transactions = current_user.transactions
+  end
+
 end
