@@ -8,4 +8,15 @@ describe Transaction do
   it "create valid transaction" do
     subject { create :transaction }
   end
+
+  describe "add_transaction_details" do
+    let(:quantity) { 5 }
+    let(:transaction) {
+      create :transaction, user: user, product: product, currency: currency, quantity: quantity
+    }
+    subject { transaction.add_transaction_details }
+    context "if valid" do
+      it {is_expected.to eq(true)}
+    end
+  end
 end

@@ -5,9 +5,5 @@ FactoryBot.define do
     product { build_stubbed(:product) }
     quantity { 5 }
     amount { product.price * quantity }
-
-    # after(:build) do |transaction|
-    #   traamount = product.price * quantity
-    # end
   end
 end
