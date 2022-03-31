@@ -68,3 +68,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # for scheduling
 gem 'whenever'
+
+# enabling security related headers in Rails application
+gem 'secure_headers'
