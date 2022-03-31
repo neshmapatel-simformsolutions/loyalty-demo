@@ -31,14 +31,14 @@ class Transaction < ApplicationRecord
       user.customer_tier = "gold"
       user.airport_lounge_reward = true
     else
-      user.customer_tier = "plaitnum"
+      user.customer_tier = 2
     end
     user.save!
   end
 
   def calculate_points(same_currency)
     # check if transaction is made in same currency as the user is registered
-    # if both are same; add 10 points per 100$, else double the points
+    # if both are same; add 10 points, else double the points
     same_currency ? (amount/100).to_i * 10 : (amount/100).to_i * 20
   end
 end

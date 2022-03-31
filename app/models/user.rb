@@ -18,4 +18,9 @@ class User < ApplicationRecord
   def check_birthdate
     self.birthdate > Date.today ?  errors.add(:birthdate, "cannot be greater than today's date") : nil
   end
+
+  # returns the associated transactions that are created with same currency.
+  def fetch_native_transactions
+    transactions.where(currency_id: currency_id)
+  end
 end
