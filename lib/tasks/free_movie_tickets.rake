@@ -12,6 +12,7 @@ namespace :free_movie_tickets do
         if (60.days.ago.beginning_of_day..Date.today.end_of_day).include? first_transaction_created_at &&
             user.fetch_native_transactions.sum(:amount).to_f > 1000
 
+          UserReward.create(user_id: user.id, reward_id: Reward.find_by(name: "Movie Tickets reward").id )
           user.movie_tickets_reward = true
           user.movie_tickets_reward_collected_at = DateTime.now
           user.save!

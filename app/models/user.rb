@@ -10,6 +10,8 @@ class User < ApplicationRecord
   has_many :transactions
   has_many :products, through: :transactions, dependent: :destroy
   belongs_to :currency
+  has_many :user_rewards
+  has_many :rewards, through: :user_rewards, dependent: :destroy
 
   # Validations
   validates :first_name, :last_name, :birthdate, presence: true

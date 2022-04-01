@@ -12,6 +12,7 @@ namespace :free_coffee do
 
       # if total points are > 100, user gets free coffe reward.
       if points > 100
+        UserReward.create(user_id: user.id, reward_id: Reward.find_by(name: "Free Coffee Reward").id )
         user.free_coffee_reward = true
         user.free_coffee_reward_collected_at = DateTime.now
         user.save!

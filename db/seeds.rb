@@ -8,7 +8,9 @@
 
 # Delete everything in the database and add new data.
 Transaction.delete_all
+UserReward.delete_all
 User.destroy_all
+Reward.delete_all
 Currency.destroy_all
 [
   [1, 'USD', '$'],
@@ -56,5 +58,18 @@ end
     currency_id: Currency.ids.sample,
     user_id: User.ids.sample,
     product_id: Product.ids.sample
+  )
+end
+
+[
+  [1, 'Free Coffee Reward',   'Reward if 100 points are accumulated in a month'                ],
+  [2, 'Birthday Reward',      'Reward during birthday months'                                  ],
+  [3, 'Movie Tickets Reward', 'Reward if spending is >1000 within 60 days of first transaction'],
+  [4, 'Cash Rebate Reward',   'Reward if 10 or more transactions that have an amount >100'     ]
+].each do |reward|
+  Reward.create!(
+    id: reward[0],
+    name: reward[1],
+    description: reward[2]
   )
 end
