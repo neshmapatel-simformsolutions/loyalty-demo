@@ -7,7 +7,8 @@ namespace :quaterly_rewards do
       transactions: {created_at: Date.today.months_since(-3).beginning_of_day..Date.today.end_of_day}
     ).find_each(batch_size: 1000) do |user|
 
-      # exclude foreign transactions
+      # ASSUMPTION: consider transactions with the same currency
+      # that a user is registered with, exclude foreign transactions.
       if user.fetch_native_transactions.sum(:amount) > 2000
         user.points = user.points + 100
         user.save!

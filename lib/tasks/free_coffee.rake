@@ -7,14 +7,14 @@ namespace :free_coffee do
     ).find_each(batch_size: 1000) do |user|
 
       # Calculate points of the transaction that has been created in a month and reward accordingly
-      user.transactions.each do |transaction|
-        points = transaction.calculate_points(user.currency == transaction.currency)
+      # for calculating points, currency of user and transactions are taken into consideration.
+      points = user.calculate_reward_points
 
-        if points > 100
-          user.free_coffee_reward = true
-          user.free_coffee_reward_collected_at = DateTime.now
-          user.save!
-        end
+      # if total points are > 100, user gets free coffe reward.
+      if points > 100
+        user.free_coffee_reward = true
+        user.free_coffee_reward_collected_at = DateTime.now
+        user.save!
       end
     end
   end

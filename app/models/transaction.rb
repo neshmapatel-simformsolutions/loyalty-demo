@@ -15,7 +15,6 @@ class Transaction < ApplicationRecord
   end
 
   def update_user_points_and_status
-    user = self.user
 
     # update points as if transaction is greater than 100
     if self.amount >= 100
@@ -24,15 +23,16 @@ class Transaction < ApplicationRecord
     end
 
     # update customer-tier according to the points
-    case user.points
-    when 0..999
-      user.customer_tier = "standard"
-    when 1000..4999
-      user.customer_tier = "gold"
-      user.airport_lounge_reward = true
-    else
-      user.customer_tier = 2
-    end
+    user.customer_tier =
+      case user.points
+      when 0..999
+        "standard"
+      when 1000..4999
+        user.airport_lounge_reward = true
+        "gold"
+      else
+        "platinum"
+      end
     user.save!
   end
 

@@ -5,6 +5,8 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+# Delete everything in the database and add new data.
 Transaction.delete_all
 User.destroy_all
 Currency.destroy_all
